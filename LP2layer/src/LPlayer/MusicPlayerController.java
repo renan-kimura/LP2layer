@@ -39,6 +39,7 @@ public class MusicPlayerController implements Initializable {
 	
 	MusicPlayer mp = new MusicPlayer();
 	Musicas musicas;
+	int currentId;
 	public MusicPlayerController() throws JavaLayerException, IOException {
 		//p = super.getPlayer();
 		//musicas  = new Musicas();
@@ -101,11 +102,25 @@ public class MusicPlayerController implements Initializable {
 	@FXML
 	public void selectCurrentSong(MouseEvent e) {
 		musica_atual.setText(listview.getSelectionModel().getSelectedItem());
+		currentId = listview.getSelectionModel().getSelectedIndex();
 	}
 	@FXML
 	public void removeSeletedSong() {
 		final int selectedIdx = listview.getSelectionModel().getSelectedIndex();
 		listview.getItems().remove(selectedIdx);
+	}
+	@FXML
+	public void nextSong() throws FileNotFoundException, JavaLayerException, InterruptedException {
+		//como pega o proximo item da lista?
+		this.stop_btn();
+		musica_atual.setText(listview.getItems().get(currentId +1));
+		this.play_btn();
+	}
+	@FXML
+	public void prevSong() throws FileNotFoundException, JavaLayerException, InterruptedException {
+		this.stop_btn();
+		musica_atual.setText(listview.getItems().get(currentId -1));
+		this.play_btn();
 	}
 
 	@Override
