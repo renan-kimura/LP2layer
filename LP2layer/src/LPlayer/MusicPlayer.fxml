@@ -55,7 +55,7 @@
               </rowConstraints>
                <children>
                   <Button alignment="CENTER" mnemonicParsing="false" onAction="#select_btn" prefHeight="25.0" prefWidth="156.0" text="Add" textAlignment="CENTER" />
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Remove" GridPane.columnIndex="1" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#removeSeletedSong" prefHeight="25.0" prefWidth="134.0" text="Remove" GridPane.columnIndex="1" />
                </children>
             </GridPane>
          </bottom>

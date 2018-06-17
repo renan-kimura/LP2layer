@@ -102,6 +102,11 @@ public class MusicPlayerController implements Initializable {
 	public void selectCurrentSong(MouseEvent e) {
 		musica_atual.setText(listview.getSelectionModel().getSelectedItem());
 	}
+	@FXML
+	public void removeSeletedSong() {
+		final int selectedIdx = listview.getSelectionModel().getSelectedIndex();
+		listview.getItems().remove(selectedIdx);
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
