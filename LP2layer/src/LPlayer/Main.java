@@ -1,7 +1,6 @@
 package LPlayer;
 
 import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,11 +16,14 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("LP2layer");
+		this.primaryStage.setOnCloseRequest(event -> {
+			System.exit(0);
+		});
 		showMainView();
 	}
 	private void showMainView() throws IOException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("view/MainView.fxml"));
+		loader.setLocation(Main.class.getResource("MusicPlayer.fxml"));
 		mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);
 		primaryStage.setScene(scene);
