@@ -11,7 +11,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -41,11 +40,7 @@ public class MusicPlayerController implements Initializable {
 	Musicas musicas;
 	int currentId;
 	public MusicPlayerController() throws JavaLayerException, IOException {
-		//p = super.getPlayer();
-		//musicas  = new Musicas();
-		//load_musics(); //quando ativa isso dï¿½ pau no fxml
 	}
-	
 	
 	@FXML
 	public void play_btn() throws FileNotFoundException, JavaLayerException{
@@ -75,22 +70,15 @@ public class MusicPlayerController implements Initializable {
 		if(seletedFiles != null) {
 			for (int i = 0; i < seletedFiles.size(); i++) {
 				listview.getItems().add(seletedFiles.get(i).getAbsolutePath());
-				//arrumar essa parte para gravar as mï¿½sicas adicionadas
+				//arrumar essa parte para gravar as músicas adicionadas
 				buffWrite.append(seletedFiles.get(i).getAbsolutePath() + "\n");
 			}
 			buffWrite.close();
 		}else{
-			System.out.println("cancelou seleï¿½ï¿½o");
+			System.out.println("cancelou seleção");
 		}
 	}
-	
-	@FXML
-	//nï¿½o vai mais ser preciso, passei para a load_musics
-	public void atual_btn() {
-		//musica_atual.setLabelFor(listview.getOnMousePressed());
-		//listview = new ListView(listview.getOnMouseClicked());
-	}
-	
+		
 	@FXML
 	public void load_musics() {
 		for (int i = 0; i < musicas.getListaMusicas().size(); i++) {
@@ -111,7 +99,6 @@ public class MusicPlayerController implements Initializable {
 	}
 	@FXML
 	public void nextSong() throws FileNotFoundException, JavaLayerException, InterruptedException {
-		//como pega o proximo item da lista?
 		this.stop_btn();
 		musica_atual.setText(listview.getItems().get(currentId +1));
 		this.play_btn();
@@ -122,6 +109,10 @@ public class MusicPlayerController implements Initializable {
 		musica_atual.setText(listview.getItems().get(currentId -1));
 		this.play_btn();
 	}
+	@FXML
+	public void exitMenu() {
+		System.exit(0);
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -130,11 +121,9 @@ public class MusicPlayerController implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//load_musics();
-		//listaDmusicas.add("teste");
 		BufferedReader buffRead = null;
 		try {
-			buffRead = new BufferedReader(new FileReader("/home/viniciusrvk/git/LP2layer/LP2layer/src/musicas.txt"));
+			buffRead = new BufferedReader(new FileReader("musicas.txt"));
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -147,13 +136,11 @@ public class MusicPlayerController implements Initializable {
 					System.out.println(linha);	
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			buffRead.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		listview.itemsProperty().bind(musicas.getListaMusicas());

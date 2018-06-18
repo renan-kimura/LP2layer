@@ -8,9 +8,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -25,12 +22,14 @@
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#select_btn" text="Adicionar músicas" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" onAction="#removeSeletedSong" text="Remover músicas" />
+                  <MenuItem mnemonicParsing="false" onAction="#exitMenu" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Usuário">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" text="Adicionar usuário" />
+                  <MenuItem mnemonicParsing="false" text="Remover usuário" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -39,29 +38,18 @@
             </items>
           </Menu>
         </menus>
+         <BorderPane.margin>
+            <Insets bottom="2.0" />
+         </BorderPane.margin>
       </MenuBar>
    </top>
    <left>
-      <BorderPane prefHeight="311.0" prefWidth="223.0" BorderPane.alignment="CENTER">
-         <center>
-            <ListView fx:id="listview" onEditStart="#load_musics" onMouseClicked="#selectCurrentSong" prefHeight="283.0" prefWidth="223.0" stylesheets="@DarkTheme.css" BorderPane.alignment="CENTER">
-               <padding>
-                  <Insets bottom="5.0" />
-               </padding>
-               <styleClass>
-                  <String fx:value="background" />
-                  <String fx:value="list-cell" />
-                  <String fx:value="text-field" />
-               </styleClass>
-               <BorderPane.margin>
-                  <Insets bottom="5.0" />
-               </BorderPane.margin></ListView>
-         </center>
+      <BorderPane prefHeight="311.0" prefWidth="223.0" styleClass="background" BorderPane.alignment="CENTER">
          <top>
-            <Label style="-fx-text-fill: black;" stylesheets="@DarkTheme.css" text="Músicas" BorderPane.alignment="CENTER" />
+            <Label style="-fx-text-fill: white;" stylesheets="@DarkTheme.css" text="Músicas" BorderPane.alignment="CENTER" />
          </top>
          <bottom>
-            <GridPane prefHeight="24.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <GridPane prefHeight="24.0" prefWidth="200.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
@@ -70,22 +58,41 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#select_btn" prefHeight="25.0" prefWidth="156.0" text="Add" textAlignment="CENTER" />
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#removeSeletedSong" prefHeight="33.0" prefWidth="127.0" text="Remove" GridPane.columnIndex="1" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#select_btn" prefHeight="33.0" prefWidth="127.0" text="Add" textAlignment="CENTER" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#removeSeletedSong" prefHeight="33.0" prefWidth="127.0" text="Remove" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></Button>
                </children>
                <BorderPane.margin>
-                  <Insets bottom="10.0" />
+                  <Insets top="3.0" />
                </BorderPane.margin>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
             </GridPane>
          </bottom>
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
+         <center>
+            <ListView fx:id="listview" onEditStart="#load_musics" onMouseClicked="#selectCurrentSong" prefHeight="206.0" prefWidth="200.0" stylesheets="@DarkTheme.css" BorderPane.alignment="CENTER">
+               <styleClass>
+                  <String fx:value="text-field" />
+                  <String fx:value="background" />
+                  <String fx:value="column-header-background" />
+                  <String fx:value="table-row-cell" />
+                  <String fx:value="list-cell" />
+               </styleClass>
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin></ListView>
+         </center>
       </BorderPane>
    </left>
-   <center>
-      <AnchorPane prefWidth="600.0" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="6.0" />
-         </BorderPane.margin></AnchorPane>
-   </center>
    <bottom>
       <GridPane prefHeight="54.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -104,41 +111,78 @@
                   <Button mnemonicParsing="false" onAction="#stop_btn" text="Stop" />
                   <Button mnemonicParsing="false" onAction="#nextSong" text="&gt;&gt;" />
                </children>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </HBox>
          </children>
       </GridPane>
    </bottom>
    <right>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <top>
-            <Label style="-fx-text-fill: black;" stylesheets="@DarkTheme.css" text="Usuário" textAlignment="CENTER" BorderPane.alignment="CENTER" />
-         </top>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="background" BorderPane.alignment="CENTER">
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="206.0" prefWidth="200.0" styleClass="text-field" stylesheets="@DarkTheme.css" BorderPane.alignment="CENTER">
                <children>
-                  <GridPane prefHeight="84.0" prefWidth="200.0">
+                  <GridPane prefHeight="24.0" prefWidth="200.0" styleClass="background" stylesheets="@DarkTheme.css">
                     <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label style="-fx-text-fill: white;" text="Playlist" GridPane.halignment="CENTER" />
+                     </children>
+                  </GridPane>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
-                     <children>
-                        <ImageView fitHeight="92.0" fitWidth="75.0" opacity="0.46" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <image>
-                              <Image url="@../../../../../Desktop/avatar_generico.jpg" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </GridPane>
-                  <ListView prefHeight="286.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <VBox.margin>
-                        <Insets bottom="5.0" />
+                        <Insets />
                      </VBox.margin>
-                  </ListView>
+                  </GridPane>
                </children>
             </VBox>
          </center>
+         <BorderPane.margin>
+            <Insets right="10.0" />
+         </BorderPane.margin>
       </BorderPane>
    </right>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <padding>
+      <Insets bottom="10.0" />
+   </padding>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="background" BorderPane.alignment="CENTER">
+         <top>
+            <Label style="-fx-text-fill: white;" stylesheets="@DarkTheme.css" text="Usuário" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <ListView prefHeight="277.0" prefWidth="257.0" styleClass="background" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <GridPane prefHeight="24.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="127.0" text="Button" />
+                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="127.0" text="Button" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </bottom>
+      </BorderPane>
+   </center>
 </BorderPane>

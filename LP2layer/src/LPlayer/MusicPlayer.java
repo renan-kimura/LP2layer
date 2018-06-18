@@ -1,25 +1,16 @@
 package LPlayer;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 
-
-
 public class MusicPlayer implements Runnable{
-	//FileInputStream songFile;
 	FileInputStream songFile;
 	Player player;
 	String currentSong;
 	Boolean stop = false;
-
 	
 	public MusicPlayer() throws JavaLayerException, FileNotFoundException{
-		/*if(currentSong != null) {
-		songFile = new FileInputStream(currentSong);
-		player = new Player(songFile);
-		}*/
 	}
 
 	public Player getPlayer() {
@@ -38,7 +29,6 @@ public class MusicPlayer implements Runnable{
 				System.out.println("deu ruim");
 				e.printStackTrace();
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -51,9 +41,7 @@ public class MusicPlayer implements Runnable{
 	public String getCurrentSong() {
 		return currentSong;
 	}
-
 	public void setCurrentSong(String currentSong) {
 		this.currentSong = currentSong;
 	}
-
 }
