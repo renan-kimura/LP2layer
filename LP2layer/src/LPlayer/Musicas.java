@@ -12,14 +12,14 @@ public class Musicas implements ManipularArqMusicas {
 	String path = "musicas.txt";
 	
 	private File ArquivoBase = new File(path); //passar cada linha para dentro do ArrayList
-	//construtor pega as músicas do txt e põe num List<>
+	//construtor pega as mï¿½sicas do txt e pï¿½e num List<>
 	public Musicas () throws IOException {
-		BufferedReader buffRead = new BufferedReader(new FileReader("musicas.txt"));
+		BufferedReader buffRead = new BufferedReader(new FileReader("/home/viniciusrvk/git/LP2layer/LP2layer/src/musicas.txt"));
 		String linha = "";
 		while ((linha = buffRead.readLine()) != null) {
 			
 				//listaMusicas.add(linha);
-				System.out.println(linha);	
+				System.out.println(linha);
 		}
 		buffRead.close();
 		

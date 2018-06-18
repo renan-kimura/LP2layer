@@ -1,2 +1,1 @@
-C:\Users\Renan\Music\05 - Life On Mars_.mp3
-C:\Users\Renan\Music\06 - Starman.mp3
+/home/viniciusrvk/git/bkp/musicas/musica2.mp3

@@ -43,7 +43,7 @@ public class MusicPlayerController implements Initializable {
 	public MusicPlayerController() throws JavaLayerException, IOException {
 		//p = super.getPlayer();
 		//musicas  = new Musicas();
-		//load_musics(); //quando ativa isso dá pau no fxml
+		//load_musics(); //quando ativa isso dï¿½ pau no fxml
 	}
 	
 	
@@ -75,17 +75,17 @@ public class MusicPlayerController implements Initializable {
 		if(seletedFiles != null) {
 			for (int i = 0; i < seletedFiles.size(); i++) {
 				listview.getItems().add(seletedFiles.get(i).getAbsolutePath());
-				//arrumar essa parte para gravar as músicas adicionadas
+				//arrumar essa parte para gravar as mï¿½sicas adicionadas
 				buffWrite.append(seletedFiles.get(i).getAbsolutePath() + "\n");
 			}
 			buffWrite.close();
 		}else{
-			System.out.println("cancelou seleção");
+			System.out.println("cancelou seleï¿½ï¿½o");
 		}
 	}
 	
 	@FXML
-	//não vai mais ser preciso, passei para a load_musics
+	//nï¿½o vai mais ser preciso, passei para a load_musics
 	public void atual_btn() {
 		//musica_atual.setLabelFor(listview.getOnMousePressed());
 		//listview = new ListView(listview.getOnMouseClicked());
@@ -134,7 +134,7 @@ public class MusicPlayerController implements Initializable {
 		//listaDmusicas.add("teste");
 		BufferedReader buffRead = null;
 		try {
-			buffRead = new BufferedReader(new FileReader("musicas.txt"));
+			buffRead = new BufferedReader(new FileReader("/home/viniciusrvk/git/LP2layer/LP2layer/src/musicas.txt"));
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
