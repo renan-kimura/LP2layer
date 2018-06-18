@@ -39,11 +39,13 @@ public class MusicPlayerController implements Initializable {
 	MusicPlayer mp = new MusicPlayer();
 	Musicas musicas;
 	int currentId;
+	String musicaRepositorio = "/home/viniciusrvk/git/LP2layer/LP2layer/data/playlist/";
 	public MusicPlayerController() throws JavaLayerException, IOException {
 	}
 	
 	@FXML
 	public void play_btn() throws FileNotFoundException, JavaLayerException{
+		mp.player.close();
 		mp.stop=false;
 		mp.setCurrentSong(musica_atual.getText());
 		Thread t1 = new Thread(mp);
@@ -58,14 +60,14 @@ public class MusicPlayerController implements Initializable {
 		System.out.println("Stop");
 	}
 	@FXML
-	public void select_btn() throws IOException{
-		BufferedWriter buffWrite = new BufferedWriter(new FileWriter("data/musicas.txt"));
+	public void addMusica() throws IOException{
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(musicaRepositorio+"playListDefault.txt"));
 		FileChooser fc = new FileChooser();
 		fc.getExtensionFilters().addAll(
 				new ExtensionFilter("Audio Files", "*.mp3"),
 				new ExtensionFilter("All files", "*.*"));
 		List<File> seletedFiles = fc.showOpenMultipleDialog(null);
-		System.out.println("select_btn");
+		System.out.println("addMusica");
 		
 		if(seletedFiles != null) {
 			for (int i = 0; i < seletedFiles.size(); i++) {
@@ -117,9 +119,11 @@ public class MusicPlayerController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		musicas  = new Musicas();
-		BufferedReader buffRead = null;
+		musicas.carregarMusicas();
+		listaDmusicas = musicas.getListaMusicas();
+		/**BufferedReader buffRead = null;
 		try {
-			buffRead = new BufferedReader(new FileReader("musicas.txt"));
+			buffRead = new BufferedReader(new FileReader(musicaRepositorio+"playListDefault.txt"));
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -138,7 +142,7 @@ public class MusicPlayerController implements Initializable {
 			buffRead.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 		listview.itemsProperty().bind(musicas.getListaMusicas());
 		listview.setOnMouseClicked(new EventHandler<MouseEvent>(){
 

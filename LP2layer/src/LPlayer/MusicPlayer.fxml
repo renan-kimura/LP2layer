@@ -15,13 +15,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: linear-gradient(to top, #b5bcc6, #dee3e4);" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LPlayer.MusicPlayerController">
+<BorderPane prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: linear-gradient(to top, #b5bcc6, #dee3e4);" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LPlayer.MusicPlayerController">
    <top>
       <MenuBar prefHeight="8.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#select_btn" text="Adicionar músicas" />
+              <MenuItem mnemonicParsing="false" onAction="#addMusica" text="Adicionar músicas" />
                   <MenuItem mnemonicParsing="false" onAction="#removeSeletedSong" text="Remover músicas" />
                   <MenuItem mnemonicParsing="false" onAction="#exitMenu" text="Close" />
             </items>
@@ -58,7 +58,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#select_btn" prefHeight="33.0" prefWidth="127.0" text="Add" textAlignment="CENTER" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#addMusica" prefHeight="33.0" prefWidth="127.0" text="Add" textAlignment="CENTER" />
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#removeSeletedSong" prefHeight="33.0" prefWidth="127.0" text="Remove" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets />
