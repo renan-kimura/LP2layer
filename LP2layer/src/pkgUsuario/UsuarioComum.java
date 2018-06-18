@@ -33,8 +33,7 @@ public class UsuarioComum extends Usuario {
 	@Override
 	public
 	Object getPlayList() {
-		// TODO Auto-generated method stub
-		return null;
+		return plailyst;
 	}
 	
 	
