@@ -26,7 +26,7 @@ import javazoom.jl.decoder.JavaLayerException;
 
 public class MusicPlayerController implements Initializable {
 	
-	List<String> listaDmusicas = new ArrayList<String>();
+	
 	@FXML
 	Label musica_atual;
 	@FXML
@@ -36,11 +36,14 @@ public class MusicPlayerController implements Initializable {
 	@FXML
 	private Button btn_stop;
 	
+	List<String> listaDmusicas = new ArrayList<String>();
 	MusicPlayer mp = new MusicPlayer();
 	Musicas musicas;
 	int currentId;
 	String musicaRepositorio = "/home/viniciusrvk/git/LP2layer/LP2layer/data/playlist/";
 	public MusicPlayerController() throws JavaLayerException, IOException {
+		musicas = new Musicas();
+		musicas.carregarMusicas();
 	}
 	
 	@FXML

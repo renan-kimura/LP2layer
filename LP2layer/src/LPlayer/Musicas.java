@@ -11,10 +11,11 @@ import java.util.Iterator;
 
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
+import pkgMusica.ManipularArqMusicas;
 import pkgTree.Trie;
 
 public class Musicas implements ManipularArqMusicas {
-	private ListProperty<String> listaMusicas = new SimpleListProperty<String>();
+	private ArrayList<String> nomeMusica = new ArrayList<String>();
 	Trie musicaTree = new Trie();
 	private File file;
 
@@ -35,7 +36,7 @@ public class Musicas implements ManipularArqMusicas {
 						linha = tmp.split(";");
 						tmp = linha[0];
 						musicaTree.insert(linha[0], linha[1]);
-						listaMusicas.add(tmp);
+						nomeMusica.add(tmp);
 						System.out.println(linha[0]+" "+linha[1]);
 					}in.close();
 				}
@@ -58,7 +59,7 @@ public class Musicas implements ManipularArqMusicas {
 				try {
 					FileWriter playList = new FileWriter(file);
 					try(BufferedWriter out = new BufferedWriter(playList)){
-						for (String string : listaMusicas) {
+						for (String string : nomeMusica) {
 							out.write(string+";"+musicaTree.getValor(string));
 						}out.close();
 					}playList.close();
@@ -80,7 +81,7 @@ public class Musicas implements ManipularArqMusicas {
 				try {
 					FileWriter playList = new FileWriter(file);
 					try(BufferedWriter out = new BufferedWriter(playList)){
-						for (String string : listaMusicas) {
+						for (String string : nomeMusica) {
 							out.write(string+";"+musicaTree.getValor(string));
 						}out.close();
 					}playList.close();
@@ -103,11 +104,11 @@ public class Musicas implements ManipularArqMusicas {
 		return nome;
 	}
 	
-	public ListProperty<String> getListaMusicas() {
-		return listaMusicas;
+	public ArrayList<String> getnomeMusica() {
+		return nomeMusica;
 	}
-	public void setListaMusicas(ListProperty<String> listaMusicas) {
-		this.listaMusicas = listaMusicas;
+	public void setNomeMusica(ArrayList<String> nomeMusica) {
+		this.nomeMusica = nomeMusica;
 	}
 	@Override
 	public void leitor() throws IOException {

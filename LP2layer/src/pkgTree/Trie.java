@@ -37,6 +37,7 @@ public class Trie {
             }
         }
         corredor.stopIt();
+        corredor.setChave(chave);
         corredor.setValor(valor);
         cout++;
     }
@@ -53,6 +54,7 @@ public class Trie {
         }
         return corredor.getStop()==true ? true:false;
     }
+    
     public Object getValor(String str) {
     	TrieNode corredor = raiz;
         for(int i=0; i<str.length(); i++){
@@ -81,14 +83,16 @@ public class Trie {
         show(raiz, "");
     }
     private void show(TrieNode raiz, String str){
+    	String tmp = "";
         if(raiz.getPonteiroNodes().isEmpty()){
             // retorna
         }else{
             for (TrieNode node : raiz.getPonteiroNodes()) {
                 if(node.getStop()==true){
-                    System.out.println(str+node.getChave());
+                	tmp = node.getChave()+";"+node.getValor()+"\n";
+                    System.out.println(node.getChave());
                 }else {
-                	show(node, str+node.getChave());
+                	show(node, str+node.getValor());
                 }
             }
         }

@@ -13,17 +13,18 @@ import java.util.ArrayList;
  */
 public class TrieNode {
 
-    private String chave; //chave
+    private String indice; //indice
     private ArrayList<TrieNode> ponteiros;
     private boolean stop;
+    private Object chave;
     private Object valor; //guarda qualquer valor
     
     /**
      * <h3>Construtor</h3>
-     * @param chave
+     * @param indice
      */
-    public TrieNode(String chave) {
-        this.chave = chave;
+    public TrieNode(String indice) {
+        this.indice = indice;
         ponteiros = new ArrayList<TrieNode>();
         stop = false;
     }
@@ -32,14 +33,18 @@ public class TrieNode {
      *
      * @return
      */
-    public String getChave() {
-        return chave;
+    public String getIndice() {
+        return indice;
     }
     /**
      * <h3>Função para retornar valor</h3>
      * @return
      */
     public Object getValor() {return valor;}
+    
+    public Object getChave() {
+		return chave;
+	}
     
     /**
      * <h3>Função para indicar parada</3>
@@ -70,12 +75,12 @@ public class TrieNode {
     
     /**
      * Função verifica se existe próximo node.
-     * @param chave
+     * @param indice
      * @return
      */
-    public boolean temProximoValor(String chave){
+    public boolean temProximoValor(String indice){
         for (TrieNode ponteiro : ponteiros) {
-            if(chave.equals(ponteiro.getChave())){
+            if(indice.equals(ponteiro.getIndice())){
                 return true;
             }
         }
@@ -84,7 +89,7 @@ public class TrieNode {
 
     /**
      *
-     * @param chave
+     * @param indice
      */
     public void setValor(Object valor) {
         this.valor = valor;
@@ -92,12 +97,12 @@ public class TrieNode {
     
     /**
      * Função retorna o próximo node.
-     * @param chave
+     * @param indice
      * @return ponteiros
      */
-    public TrieNode Proximo(String chave) {
+    public TrieNode Proximo(String indice) {
         for (TrieNode ponteiro : ponteiros) {
-            if(chave.equals(ponteiro.getChave())){
+            if(indice.equals(ponteiro.getIndice())){
                 return ponteiro;
             }
         }System.out.println("retornou null");
@@ -127,5 +132,9 @@ public class TrieNode {
     TrieNode primeiro() {
         return ponteiros.get(0);
     }
+
+	public void setChave(String chave) {
+		this.chave = chave;
+	}
     
 }
