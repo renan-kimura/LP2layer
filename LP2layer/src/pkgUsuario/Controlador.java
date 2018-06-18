@@ -3,7 +3,7 @@ package pkgUsuario;
 import java.util.ArrayList;
 
 public class Controlador {
-	Usuario usuario;
+	UsuarioVip usuarioVip;
 	public Controlador() {
 		
 	}

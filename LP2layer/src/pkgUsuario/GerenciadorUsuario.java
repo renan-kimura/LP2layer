@@ -10,8 +10,8 @@ public class GerenciadorUsuario {
 	}
 	
 	/**
-	 * <h3>Função para verificar se usuario ja esta cadastrado.</h3>
-	 * @param usuario
+	 * <h3>Função para verificar se usuarioVip ja esta cadastrado.</h3>
+	 * @param usuarioVip
 	 * @param senha
 	 * @return boolean
 	 */
@@ -37,11 +37,11 @@ public class GerenciadorUsuario {
 		}return false;
 	}
 	/**
-	 * <h3>Função retorna Usuario já cadastrado.</h3>
+	 * <h3>Função retorna UsuarioVip já cadastrado.</h3>
 	 * @param nome
-	 * @return Usuario
+	 * @return UsuarioVip
 	 */
-	public Usuario getUsuario(String nome) {
+	public UsuarioVip getUsuario(String nome) {
 		String []linha;
 		File data = new File("data/users.txt");
 		if(!data.exists()){
@@ -53,7 +53,7 @@ public class GerenciadorUsuario {
 					while (in.ready()) {
 						linha = in.readLine().split(";");
 						if(linha[0].equals(nome)) {
-							return new Usuario(linha);
+							return new UsuarioVip(linha);
 						}
 					}in.close();
 				}
