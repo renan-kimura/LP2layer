@@ -43,7 +43,7 @@ public class Musicas implements ManipularArqMusicas {
 	public void salvarMusicas() {
 		file = new File("data/playListDefault.txt");
 		if(!file.exists()) {
-			System.out.println("Erro. Lista de musica principal nao existe");
+			System.out.println("Erro! Lista de musica principal nao existe");
 		}else {
 			
 		}
