@@ -57,7 +57,7 @@ public class GerenciadorUsuario {
 			}catch (Exception e) {
 				System.out.println("Erro! Contate o suporte.");
 			}
-		}return null;
+		}return null; 
 	}
 	
 	
