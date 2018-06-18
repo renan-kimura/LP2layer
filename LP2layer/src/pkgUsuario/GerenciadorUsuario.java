@@ -5,10 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 
 public class GerenciadorUsuario {
-	
-	public GerenciadorUsuario() {
-	}
-	
+	File data;
 	/**
 	 * <h3>Função para verificar se usuarioVip ja esta cadastrado.</h3>
 	 * @param usuarioVip
@@ -17,9 +14,9 @@ public class GerenciadorUsuario {
 	 */
 	public boolean checkUsuario(String usuario, String senha) {
 		String []linha;
-		File data = new File("pkgUsuario/usuarioData.txt");
+		data = new File("data/usuarios/usuarioData.txt");
 		if(!data.exists()){
-			System.out.println("Erro. Contate o suporte ao sistema!");
+			System.out.println("Erro. Contate o suporte do sistema!");
 		}else {
 			try {
 				FileReader users = new FileReader(data);
@@ -43,7 +40,7 @@ public class GerenciadorUsuario {
 	 */
 	public UsuarioVip getUsuario(String nome) {
 		String []linha;
-		File data = new File("data/users.txt");
+		data = new File("data/users.txt");
 		if(!data.exists()){
 			System.out.println("Erro. Contate o suporte ao sistema!");
 		}else {

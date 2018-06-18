@@ -11,14 +11,18 @@ package pkgTree;
  */
 public class Trie {
     private TrieNode raiz;
+    private int cout;
 
     public Trie() {
         raiz = new TrieNode("/");
+        cout = 0;
     }
     public TrieNode getRaiz(){
         return raiz;
     }
-    
+    public int getCout() {
+		return cout;
+	}
     public void insert(String chave, Object valor){
         TrieNode corredor = raiz;
         for(int i=0; i<chave.length(); i++){
@@ -34,6 +38,7 @@ public class Trie {
         }
         corredor.stopIt();
         corredor.setValor(valor);
+        cout++;
     }
 
     public boolean search(String str) {
@@ -75,7 +80,7 @@ public class Trie {
     public void show(){
         show(raiz, "");
     }
-    public void show(TrieNode raiz, String str){
+    private void show(TrieNode raiz, String str){
         if(raiz.getPonteiroNodes().isEmpty()){
             // retorna
         }else{

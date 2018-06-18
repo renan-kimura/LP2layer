@@ -4,88 +4,61 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
+import pkgTree.Trie;
 
 public class Musicas implements ManipularArqMusicas {
 	private ListProperty<String> listaMusicas = new SimpleListProperty<String>();
-	String path = "musicas.txt";
-	
-	private File ArquivoBase = new File(path); //passar cada linha para dentro do ArrayList
-	//construtor pega as músicas do txt e põe num List<>
-	public Musicas () throws IOException {
-		BufferedReader buffRead = new BufferedReader(new FileReader("musicas.txt"));
-		String linha = "";
-		while ((linha = buffRead.readLine()) != null) {
-			
-				//listaMusicas.add(linha);
-				System.out.println(linha);	
+	Trie musicaTree = new Trie();
+	private File file;
+
+	/**
+	 * <h3>FunÃ§Ã£o carregar musicas jÃ¡ cadastradas</h3>
+	 */
+	public void carregarMusicas() {
+		String []linha;
+		file = new File("data/playListDefault.txt");
+		if(!file.exists()) {
+			System.out.println("Erro! Contate o suporte.");
+		}else {
+			try {
+				FileReader playListDefault = new FileReader(file);
+				try (BufferedReader in = new BufferedReader(playListDefault)){
+					while (in.ready()) {
+						linha = in.readLine().split(";");
+						musicaTree.insert(linha[0], linha[1]);
+						listaMusicas.add(linha[0]);
+					}in.close();
+				}
+			}catch (Exception e) {
+				System.out.println("Erro ao carregar arquivo em Musica.java");
+			}
 		}
-		buffRead.close();
+		
 		
 	}
-	@Override
-	public void leitor() throws IOException {
-		/*BufferedReader buffRead = new BufferedReader(new FileReader("musicas.txt"));
-		String linha = "";
-		while (true) {
-			if (linha != null) {
-				musicas.add(linha);
-				System.out.println(linha);
-
-			} else
-				break;
-			linha = buffRead.readLine();
+	public void salvarMusicas() {
+		file = new File("data/playListDefault.txt");
+		if(!file.exists()) {
+			System.out.println("Erro. Lista de musica principal nao existe");
+		}else {
+			
 		}
-		buffRead.close();*/
 	}
 	
-	
-	
-	/*public static void escritor(String path) throws IOException {
-		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(path));
-		String linha = "";
-		Scanner in = new Scanner(System.in);
-		System.out.println("Escreva algo: ");
-		linha = in.nextLine();
-		buffWrite.append(linha + "\n");
-		buffWrite.close();
-	}*/
-	/*public ListView<String> load_musicas() {
-		ListView<String> listview = new ListView<String>(); 
-		for(String m : musicas) {
-			listview.setId(m);
-		}
-		return listview;
-	}*/
-	public void load_base() {
-		/*BufferedReader buffRead = new BufferedReader(new FileReader(path));
-		String linha = "";
-		while (true) {
-			if (linha != null) {
-				musicas.add(linha);
-				System.out.println(linha);
-
-			} else
-				break;
-			linha = buffRead.readLine();
-		}
-		buffRead.close();*/
-	}
-	/*public int getSizeMusica() {
-		return musicas.size();
-	}
-	public List<String> getMusicas() {
-		return this.musicas;
-	}
-	public String getElementMusica(int index) {
-		return musicas.get(index);
-	}*/
 	public ListProperty<String> getListaMusicas() {
 		return listaMusicas;
 	}
 	public void setListaMusicas(ListProperty<String> listaMusicas) {
 		this.listaMusicas = listaMusicas;
+	}
+	@Override
+	public void leitor() throws IOException {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

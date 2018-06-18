@@ -59,7 +59,7 @@ public class MusicPlayerController implements Initializable {
 	}
 	@FXML
 	public void select_btn() throws IOException{
-		BufferedWriter buffWrite = new BufferedWriter(new FileWriter("musicas.txt"));
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter("data/musicas.txt"));
 		FileChooser fc = new FileChooser();
 		fc.getExtensionFilters().addAll(
 				new ExtensionFilter("Audio Files", "*.mp3"),
@@ -70,12 +70,12 @@ public class MusicPlayerController implements Initializable {
 		if(seletedFiles != null) {
 			for (int i = 0; i < seletedFiles.size(); i++) {
 				listview.getItems().add(seletedFiles.get(i).getAbsolutePath());
-				//arrumar essa parte para gravar as músicas adicionadas
+				//arrumar essa parte para gravar as mï¿½sicas adicionadas
 				buffWrite.append(seletedFiles.get(i).getAbsolutePath() + "\n");
 			}
 			buffWrite.close();
 		}else{
-			System.out.println("cancelou seleção");
+			System.out.println("cancelou seleï¿½ï¿½o");
 		}
 	}
 		
@@ -116,11 +116,7 @@ public class MusicPlayerController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		try {
-			musicas  = new Musicas();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		musicas  = new Musicas();
 		BufferedReader buffRead = null;
 		try {
 			buffRead = new BufferedReader(new FileReader("musicas.txt"));
